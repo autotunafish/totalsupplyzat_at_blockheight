@@ -1,0 +1,185 @@
+   
+   
+   //This code snippet is a match arm for zclimate.
+   //It can be copied into the main loop with the others.
+   //A file called climatesupplyhistory.txt was placed into
+   //the zcash/src folder to record the data.
+   //It is not a normal wallet fn so doesn't need to be
+   //included there. The shear quantity (millions) of calls 
+   //leaves the script vulnerable to other system calls taking 
+   //precedence and the process halts. This was monitored
+   //with htop to ensure the climatenotify bash scripts were 
+   //still running. When they stopped, grndtotal and counter
+   //to be adjusted to reflect the last value sum and block
+   //from the climatetotalsupply.txt file.
+   
+    "K" => {
+             
+              println!("\x1b[48;5;52m\x1b[38;5;187m ! This Will Take MANY HOURS!, Procede Anyways?\x1b[0m");
+                println!("\x1b[48;5;58m\x1b[38;5;187mEnter Y to Continue or Enter Any Other Input to Return\x1b[0m");
+
+                let mut zadd = String::from(&dblpathline.clone());
+
+                io::stdin().read_line(&mut zadd).unwrap();
+                zadd.pop();
+                let yes = "Y";
+
+                let zaddy = zadd.replace('"', "");
+                //println!("zaddy   {}", &zaddy);
+
+                if zaddy.contains(&yes) == true {
+					
+                {
+                    
+                    
+                    let s5 = String::from(" getblockcount ");
+                    let mut resend0 = resend.clone();
+                    let resend0000 = s5.as_str();
+
+                    resend0.push_str(resend00);
+                    resend0.push_str(resend000);
+                    resend0.push_str(resend0000);
+                    resend0.push_str(resend00000);
+
+                    //println!("{}\n", &resend0);
+
+                    let mut var_1 = File::create(&sp).expect("no");
+                    var_1.write_all(&resend0.as_bytes()).expect("no");
+                }
+
+                let mut inotify =
+                    Inotify::init().expect("Error while initializing inotify instance");
+                inotify
+                    .add_watch(&sp2, WatchMask::CLOSE_WRITE)
+                    .expect("Failed to add file watch");
+
+                let mut buffer = [0; 512];
+                let events = inotify
+                    .read_events_blocking(&mut buffer)
+                    .expect("Error while reading events");
+                #[allow(unused_variables)]
+                for event in events {
+                    let jk = fs::read_to_string(&sp2).unwrap();
+					//println!("{}", &k);
+					let mut k = String::from(jk).clone();
+					k.pop();
+					let height: i32 = k.parse().expect("failed to parse blockheight???");
+					//May need to adjust these if the script halts
+					let mut grndtotal: i64 = 0;
+					
+					let mut counter = 1;
+					
+					loop {
+						
+						
+						{
+                {
+
+                    let s5 = String::from(" getblocksubsidy ");
+                    let mut resend0 = resend.clone();
+                    let resend0000 = s5.as_str();
+
+                    resend0.push_str(resend00);
+                    resend0.push_str(resend000);
+                    resend0.push_str(resend0000);
+                    resend0.push_str(&counter.to_string());
+					resend0.push(' ');
+                    resend0.push_str(resend00000x);
+                    
+                    //println!("{}\n", &resend0);
+                    
+                    let mut var_1 = File::create(&rp).expect("no");
+                    var_1.write_all(&resend0.as_bytes()).expect("no");
+                }
+
+                let mut inotify =
+                    Inotify::init().expect("Error while initializing inotify instance");
+                inotify
+                    .add_watch(&rp2, WatchMask::CLOSE_WRITE)
+                    .expect("Failed to add file watch");
+
+                let mut buffer = [0; 512];
+                let events = inotify
+                    .read_events_blocking(&mut buffer)
+                    .expect("Error while reading events");
+                #[allow(unused_variables)]
+                for event in events {
+                    let k = fs::read_to_string(&rp2).unwrap();
+                    let mut klines = k.split_whitespace();
+                    loop {
+                        //get first line, if any
+                        let kv = klines.next().clone();
+                        //assert EQ for Some
+                        if kv != None {
+                            //remove Result wrapper
+                            kvc = kv.unwrap();
+                            match kvc {
+                                 "\"value\":" | "\"miner\":" | "\"founders\":" => {                                                                     let jstrval = klines.next().unwrap().trim();
+                                 let mut strval = String::from(jstrval).clone();
+                                 
+                                 strval = strval.replace(',', "").replace('.', "");
+								let numfromstr: i64 = strval.parse().expect("");
+								grndtotal = grndtotal + numfromstr;
+                                 
+                                 },
+                                
+                                _ => (),
+                            }
+                            continue;
+                        }
+                        break;
+                    }
+                }
+            }
+						
+						let ten_millis = time::Duration::from_millis(50);
+						let now = time::Instant::now();
+
+						thread::sleep(ten_millis);
+						
+						{
+
+
+                    let s5 = String::from("echo");
+                    let mut resend0 = String::new();
+                    let resend0000 = s5.as_str();
+
+                    resend0.push_str(resend0000);
+                    resend0.push(' ');
+                    resend0.push_str(&grndtotal.to_string());
+                    resend0.push_str("_at_block_");
+                    resend0.push_str(&counter.to_string());
+				    resend0.push(' ');
+					resend0.push_str(">> climatesupplyhistory.txt ");
+                    
+                    resend0.pop();
+
+
+                    //println!("{}\n", &resend0);
+                    let mut var_1 = File::create(&tp).expect("no");
+                    var_1.write_all(&resend0.as_bytes()).expect("no");
+                }
+						
+						//print!(" {}_at_block_{} ", &grndtotal, &counter);
+						
+						let ten_millis = time::Duration::from_millis(50);
+						let now = time::Instant::now();
+
+						thread::sleep(ten_millis);
+						
+						if counter == height {
+							break
+						}
+						
+						counter = counter + 1;
+						
+						
+						
+						
+						continue
+					}
+					println!(" {}_at_{} ", &grndtotal, &counter);
+
+					}
+                }
+            }
